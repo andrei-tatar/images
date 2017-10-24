@@ -1,12 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.Web;
 
 namespace Backend
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
-        protected void Application_Start()
-        {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-        }
     }
 }
