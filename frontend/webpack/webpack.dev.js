@@ -3,9 +3,10 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
+var historyApiFallback = require('connect-history-api-fallback')
 
 module.exports = {
-    entry: ['./src/index.ts'],
+    entry: ['./src/app.ts'],
     output: {
         filename: 'build.js',
         path: path.resolve(__dirname, '..', 'dist'),
@@ -27,11 +28,12 @@ module.exports = {
             host: 'localhost',
             port: 6002,
             server: {
-                baseDir: './webpack/dist'
+                baseDir: './dist'
             },
             ui: false,
             online: false,
-            notify: false
+            notify: false,
+            middleware: [ historyApiFallback()],
         }),
     ],
     module: {
