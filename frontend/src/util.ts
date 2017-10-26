@@ -33,3 +33,22 @@ export function Service(name: string) {
         module.service(name, target);
     }
 }
+
+export function handleValidationErrors(err: ng.IHttpResponse<{ validationErrors: { field: string, code: string }[] }>, form: ng.IFormController) {
+    if (err.status === 400 && err.data.validationErrors) {
+        for (const error of err.data.validationErrors) {
+            const input = form[error.field] as ng.INgModelController;
+            input.$error[error.code] = true;
+            input.$setTouched();
+            const listener = () => {
+                delete input.$error[error.code];
+                const index = input.$viewChangeListeners.indexOf(listener);
+                input.$viewChangeListeners.splice(index, 1);
+            };
+            input.$viewChangeListeners.push(listener);
+        }
+
+        return true;
+    }
+    return false;
+}

@@ -7,31 +7,42 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="column">
-                <div class="upload-file" ngf-drop ngf-select ng-model="$ctrl.file" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'"
-                    ngf-max-size="20MB" layout="column" layout-align="center center">
-                    <span class="md-title" ng-if="!$ctrl.file">Drag or click to select image</span>
-                    <img ng-if="$ctrl.file" ngf-thumbnail="$ctrl.file">
-                </div>
+                <md-input-container>
+                    <div class="upload-file" ngf-drop ngf-select ng-model="$ctrl.file" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'"
+                        ngf-max-size="20MB" layout="column" layout-align="center center">
+                        <span class="md-title" ng-if="!$ctrl.file">Drag or click to select image</span>
+                        <img ng-if="$ctrl.file" ngf-thumbnail="$ctrl.file">
+                    </div>
+                    <div ng-messages="$ctrl.uploadForm.image.$error" ng-if="$ctrl.uploadForm.image.$touched">
+                        <div ng-message="required">Image is required</div>
+                    </div>
+                </md-input-container>
+
                 <md-input-container>
                     <label>Description</label>
                     <input required name="description" ng-model="$ctrl.description">
-                    <div ng-messages="projectForm.description.$error">
+                    <div ng-messages="$ctrl.uploadForm.description.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
                     <label>Location</label>
                     <input required name="location" ng-model="$ctrl.location">
-                    <div ng-messages="projectForm.description.$error">
+                    <div ng-messages="$ctrl.uploadForm.location.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
                 </md-input-container>
-                <md-chips required name="tags" ng-model="$ctrl.imageTags" md-removable="ctrl.removable" placeholder="Image tags...">
+                <md-chips ng-model="$ctrl.imageTags" md-removable="ctrl.removable" placeholder="Image tags...">
                     <md-chip-template>
                         <strong>{{$chip}}</strong>
                     </md-chip-template>
                 </md-chips>
-                <md-datepicker required ng-model="$ctrl.date" md-placeholder="Enter date"></md-datepicker>
+                <md-input-container>
+                    <md-datepicker required name="date" ng-model="$ctrl.date" md-placeholder="Enter date"></md-datepicker>
+                    <div ng-messages="$ctrl.uploadForm.date.$error" ng-if="$ctrl.uploadForm.date.$touched">
+                        <div ng-message="required">Field is required</div>
+                    </div>
+                </md-input-container>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button ng-click="$ctrl.cancel()">Cancel</md-button>
