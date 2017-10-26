@@ -1,3 +1,5 @@
+import { ToastService } from './../../services/toast.service';
+import { TranslationService } from './../../services/translations.service';
 import { ImageService } from './../../services/image.service';
 import { handleValidationErrors } from "./../../util";
 import { Component } from "./../../util";
@@ -19,12 +21,12 @@ class UploadImageController {
     location: string;
     date: Date;
 
-    static $inject = ['$state', 'imageService', '$mdToast'];
+    static $inject = ['$state', 'imageService', 'toastService'];
 
     constructor(
         private $state: ng.ui.IStateService,
         private imageService: ImageService,
-        private $mdToast: ng.material.IToastService,
+        private toastService: ToastService,
     ) {
 
     }
@@ -40,12 +42,12 @@ class UploadImageController {
             date: this.date,
             location: this.location,
         }).catch(err => {
-            if (handleValidationErrors(err, this.uploadForm))
-                return;
-            this.$mdToast.showSimple('Error: Something went wrong');
+            if (!handleValidationErrors(err, this.uploadForm))
+                this.toastService.show('upload-image.error');
+            throw err;
         }).then(() => {
             this.cancel();
-            this.$mdToast.showSimple('Image uploaded');
+            this.toastService.show('upload-image.success');
         });
     }
 }

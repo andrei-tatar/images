@@ -3,50 +3,50 @@
         <form name="$ctrl.uploadForm" ng-submit="$ctrl.upload()">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Upload image</span>
+                    <span class="md-headline">{{'upload-image.title'|translate}}</span>
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="column">
                 <md-input-container>
                     <div class="upload-file" ngf-drop ngf-select ng-model="$ctrl.file" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'"
                         ngf-max-size="20MB" layout="column" layout-align="center center">
-                        <span class="md-title" ng-if="!$ctrl.file">Drag or click to select image</span>
+                        <span class="md-title" ng-if="!$ctrl.file">{{'upload-image.image-button'|translate}}</span>
                         <img ng-if="$ctrl.file" ngf-thumbnail="$ctrl.file">
                     </div>
                     <div ng-messages="$ctrl.uploadForm.image.$error" ng-if="$ctrl.uploadForm.image.$touched">
-                        <div ng-message="required">Image is required</div>
+                        <div ng-message="required">{{'upload-image.image-required'|translate}}</div>
                     </div>
                 </md-input-container>
 
                 <md-input-container>
-                    <label>Description</label>
+                    <label>{{'upload-image.description'|translate}}</label>
                     <input required name="description" ng-model="$ctrl.description">
                     <div ng-messages="$ctrl.uploadForm.description.$error">
-                        <div ng-message="required">This is required.</div>
+                        <div ng-message="required">{{'upload-image.field-required'|translate}}</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
-                    <label>Location</label>
+                    <label>{{'upload-image.location'|translate}}</label>
                     <input required name="location" ng-model="$ctrl.location">
                     <div ng-messages="$ctrl.uploadForm.location.$error">
-                        <div ng-message="required">This is required.</div>
+                        <div ng-message="required">{{'upload-image.field-required'|translate}}</div>
                     </div>
                 </md-input-container>
-                <md-chips ng-model="$ctrl.imageTags" md-removable="ctrl.removable" placeholder="Image tags...">
+                <md-chips ng-model="$ctrl.imageTags" md-removable="ctrl.removable" placeholder="{{'upload-image.tags'|translate}}">
                     <md-chip-template>
                         <strong>{{$chip}}</strong>
                     </md-chip-template>
                 </md-chips>
                 <md-input-container>
-                    <md-datepicker required name="date" ng-model="$ctrl.date" md-placeholder="Enter date"></md-datepicker>
+                    <md-datepicker required name="date" ng-model="$ctrl.date" md-placeholder="{{'upload-image.date'|translate}}"></md-datepicker>
                     <div ng-messages="$ctrl.uploadForm.date.$error" ng-if="$ctrl.uploadForm.date.$touched">
-                        <div ng-message="required">Field is required</div>
+                        <div ng-message="required">{{'upload-image.field-required'|translate}}</div>
                     </div>
                 </md-input-container>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button ng-click="$ctrl.cancel()">Cancel</md-button>
-                <md-button type="submit" class="md-primary">Upload</md-button>
+                <md-button ng-click="$ctrl.cancel()">{{'general.cancel'|translate}}</md-button>
+                <md-button type="submit" class="md-primary">{{'upload-image.upload'|translate}}</md-button>
             </md-card-actions>
         </form>
     </md-card>
