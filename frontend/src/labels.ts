@@ -14,6 +14,7 @@ export const labels = {
         'upload-image.upload': 'Upload',
         'upload-image.error': 'Error: Something went wrong',
         'upload-image.success': 'Image uploaded',
+        'image-list.upload-image': 'Upload',
     },
     ro: {
         title: 'Aplicatie Demo Imagini',
@@ -30,6 +31,7 @@ export const labels = {
         'upload-image.upload': 'Încarcă',
         'upload-image.error': 'Erroare: Încărcarea a fost nereușită',
         'upload-image.success': 'Încărcare completă',
+        'image-list.upload-image': 'Încarcă',
     },
     _: {
         en: 'English',
