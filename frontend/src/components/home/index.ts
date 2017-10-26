@@ -1,2 +1,2 @@
 import './home.component';
-require('./home.style.scss');
+require('./home.scss');

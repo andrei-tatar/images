@@ -1,0 +1,14 @@
+home {
+  display: block;
+
+  md-toolbar {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  > div > ui-view {
+    padding: 20px;
+    width: 100%;
+    max-width: 800px !important;
+  }
+}
