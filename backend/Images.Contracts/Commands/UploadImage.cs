@@ -6,8 +6,9 @@ namespace Images.Contracts.Commands
 {
     public class UploadImage : IRequest
     {
-        public UploadImage(Stream image, string[] tags, string description, DateTime date, string location)
+        public UploadImage(string userId, Stream image, string[] tags, string description, DateTime date, string location)
         {
+            UserId = userId;
             Image = image;
             Tags = tags;
             Description = description;
@@ -17,6 +18,7 @@ namespace Images.Contracts.Commands
         }
 
         public Guid ImageGuid { get; }
+        public string UserId { get; }
         public Stream Image { get; }
         public string[] Tags { get; }
         public string Description { get; }

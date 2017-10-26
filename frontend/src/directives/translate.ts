@@ -1,10 +1,7 @@
 import { TranslationService } from './../services/translations.service';
-import { module } from './../util';
+import { Filter } from '../util';
 
-
-module.filter('translate', TranslateFilter)
-
-TranslateFilter.$inject = ['translationService'];
+Filter('translate', TranslateFilter, 'translationService')
 function TranslateFilter(translationService: TranslationService) {
     function translate(value, ...args: any[]) {
         return translationService.translate(value) || value;

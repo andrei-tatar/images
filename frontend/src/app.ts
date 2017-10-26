@@ -10,6 +10,7 @@ require('./app.scss');
 export const Module = angular
     .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload', 'ngMessages'])
     .config(appConfig)
+    .run(appRun)
     .constant('config', {
         apiEndpoint: 'http://localhost:6001/'
     } as IConfig);
@@ -21,6 +22,13 @@ function appConfig(
 ) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
+}
+
+appRun.$inject = ['$q'];
+function appRun(
+    $q: ng.IQService,
+) {
+    (window as any).Promise = $q;
 }
 
 import './components'

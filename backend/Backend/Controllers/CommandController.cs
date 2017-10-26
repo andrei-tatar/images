@@ -30,7 +30,7 @@ namespace Backend.Controllers
                 .Select(s => s.ReadAsStreamAsync())
                 .SingleOrDefault() ?? Task.FromResult<Stream>(null));
 
-            var command = new UploadImage(image, request.Tags, request.Description, request.Date, request.Location);
+            var command = new UploadImage(User.Identity.Name, image, request.Tags, request.Description, request.Date, request.Location);
             await Mediator.Send(command);
             return command.ImageGuid;
         }

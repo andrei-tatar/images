@@ -19,6 +19,7 @@ namespace Backend.WebApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            Filters.Add(new AuthorizeAttribute());
             Filters.Add(new WebApiExceptionFilter(Formatters.JsonFormatter.SerializerSettings));
         }
     }

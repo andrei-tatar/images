@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { TranslationService } from './../../services/translations.service';
 import { Component, Route } from '../../util';
 
@@ -9,7 +10,7 @@ import { Component, Route } from '../../util';
     url: '',
 })
 class HomeController {
-    static $inject = ['translationService'];
+    static $inject = ['translationService', 'authService'];
 
     languages: string[];
     get selectedLanguage() {
@@ -20,8 +21,13 @@ class HomeController {
     }
 
     constructor(
-        private translationService: TranslationService
+        private translationService: TranslationService,
+        private authService: AuthService,
     ) {
-        this.languages = translationService.languages        
+        this.languages = translationService.languages
+    }
+
+    logout() {
+        this.authService.logout();
     }
 } 

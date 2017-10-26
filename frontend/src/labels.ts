@@ -2,6 +2,7 @@ export const labels = {
     en: {
         title: 'Images Demo Application',
         language: 'Language',
+        logout: 'Logout',
         'general.cancel': 'Cancel',
         'upload-image.title': 'Upload image',
         'upload-image.image-button': 'Drag or click to select image',
@@ -19,6 +20,7 @@ export const labels = {
     ro: {
         title: 'Aplicatie Demo Imagini',
         language: 'Limba',
+        logout: 'Ieșire',
         'general.cancel': 'Anulează',
         'upload-image.title': 'Adaugă imagine',
         'upload-image.image-button': 'Trage sau click pentru a selecta imaginea',

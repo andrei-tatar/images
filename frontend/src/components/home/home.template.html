@@ -1,12 +1,15 @@
 <md-toolbar layout="row" layout-align="space-between center">
-    <h2>{{'title'|translate}}</h2>
+    <h2 flex>{{'title'|translate}}</h2>
 
-    <md-input-container>
-        <md-select ng-model="$ctrl.selectedLanguage">
-            <md-tooltip>{{'language'|translate}}</md-tooltip>
-            <md-option ng-repeat="language in $ctrl.languages" value="{{language}}">{{language|translate}}</md-option>
-        </md-select>
-    </md-input-container>
+    <div layout="row">
+        <md-button ng-click="$ctrl.logout()">{{'logout'|translate}}</md-button>
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedLanguage">
+                <md-tooltip>{{'language'|translate}}</md-tooltip>
+                <md-option ng-repeat="language in $ctrl.languages" value="{{language}}">{{language|translate}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
 </md-toolbar>
 <div ui-view>
 </div>

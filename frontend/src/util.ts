@@ -1,6 +1,6 @@
 import * as angular from 'angular'
 
-export const module = angular.module('AzetsApp');
+const module = angular.module('AzetsApp');
 
 export function Component(name: string, value: ng.IComponentOptions) {
     return function (target) {
@@ -32,6 +32,15 @@ export function Service(name: string) {
     return function (target) {
         module.service(name, target);
     }
+}
+
+export function Run(run: (...args: any[]) => void, ...inject: string[]) {
+    module.run([...inject, run]);
+}
+
+export function Filter(name, filter: Function, ...inject: string[]) {
+    filter.$inject = inject;
+    module.filter(name, filter);
 }
 
 export function handleValidationErrors(err: ng.IHttpResponse<{ validationErrors: { field: string, code: string }[] }>, form: ng.IFormController) {

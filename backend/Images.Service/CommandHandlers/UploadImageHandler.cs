@@ -27,6 +27,7 @@ namespace Images.Service.CommandHandlers
                 Tags = command.Tags,
                 Date = command.Date,
                 Description = command.Description,
+                UserId = command.UserId,
             });
         }
     }
