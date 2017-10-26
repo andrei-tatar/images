@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,11 +23,12 @@ namespace Backend.Controllers
             var requestString = await provider.Contents
                 .Single(s => s.Headers.ContentDisposition.Name == "\"request\"")
                 .ReadAsStringAsync();
-
-            var image = await provider.Contents
-                .Single(s => s.Headers.ContentDisposition.Name == "\"image\"")
-                .ReadAsStreamAsync();
             var request = JsonConvert.DeserializeObject<UploadImageRequest>(requestString);
+
+            var image = await (provider.Contents
+                .Where(s => s.Headers.ContentDisposition.Name == "\"image\"")
+                .Select(s => s.ReadAsStreamAsync())
+                .SingleOrDefault() ?? Task.FromResult<Stream>(null));
 
             var command = new UploadImage(image, request.Tags, request.Description, request.Date, request.Location);
             await Mediator.Send(command);

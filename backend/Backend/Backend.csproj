@@ -141,6 +141,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="WebApi\UnityHttpDependencyResolver.cs" />
     <Compile Include="WebApi\WebApiConfig.cs" />
+    <Compile Include="WebApi\WebApiExceptionFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
