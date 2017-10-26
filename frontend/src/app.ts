@@ -8,7 +8,10 @@ require('./app.scss');
 
 export const Module = angular
     .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload'])
-    .config(appConfig);
+    .config(appConfig)
+    .constant('config', {
+        apiEndpoint: 'http://localhost:6001/'
+    } as IConfig);
 
 appConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 function appConfig(

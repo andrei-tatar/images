@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Common;
 using Images.Contracts.Commands;
 
@@ -9,7 +8,6 @@ namespace Images.Service.CommandHandlers
     {
         public async Task Handle(UploadImage command)
         {
-            throw new NotImplementedException();
         }
     }
 }

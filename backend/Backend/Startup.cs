@@ -3,6 +3,7 @@ using Backend.WebApi;
 using Images.Service;
 using MediatR;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 using Unity;
 
@@ -16,6 +17,7 @@ namespace Backend
         {
             var container = BuildContainer();
 
+            app.UseCors(CorsOptions.AllowAll);
             app.Use<RequestContainerMiddleware>(container);
             app.Use<ExceptionMiddleware>();
             app.UseWebApi(new WebApiConfig(container));

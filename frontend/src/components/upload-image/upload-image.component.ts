@@ -1,3 +1,4 @@
+import { ImageService } from './../../services/image.service';
 import { Component } from "./../../util";
 import { Route } from "./../../util";
 
@@ -9,17 +10,19 @@ import { Route } from "./../../util";
     url: '/upload',
 })
 class UploadImageController {
+    uploadForm: ng.IFormController;
+
     imageTags: string[] = [];
     file;
     description: string;
     location: string;
     date: Date;
-    uploadForm: ng.IFormController;
 
-    static $inject = ['$state'];
+    static $inject = ['$state', 'imageService'];
 
     constructor(
         private $state: ng.ui.IStateService,
+        private imageService: ImageService,
     ) {
 
     }
@@ -29,6 +32,11 @@ class UploadImageController {
     }
 
     upload() {
-
+        this.imageService.uploadImage(this.file, {
+            tags: this.imageTags,
+            description: this.description,
+            date: this.date,
+            location: this.location,
+        });
     }
 }
