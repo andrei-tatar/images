@@ -1,3 +1,30 @@
 upload-image {
   display: block;
+
+  md-content {
+    padding: 15px;
+  }
+
+  md-datepicker {
+    margin-top: 35px;
+  }
+
+  md-card {
+    max-width: 800px !important;
+  }
+
+  .upload-file {
+    margin-bottom: 5px;
+    border: 1.5px dashed lightgray;
+    border-radius: 10px;
+    min-height: 60px;
+  }
+
+  .md-chip-input-container {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
 }
