@@ -163,6 +163,10 @@
       <Project>{cabb5b2f-7399-4e06-94e1-b79a2e1030ed}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileBasedStorage\FileBasedStorage.csproj">
+      <Project>{921884E6-FBC7-4197-8AA7-BAA46C26FD09}</Project>
+      <Name>FileBasedStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Images.Contracts\Images.Contracts.csproj">
       <Project>{76AB88F2-07FF-4F29-80F7-0C2551303349}</Project>
       <Name>Images.Contracts</Name>

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Contracts", "Backend.Contracts\Backend.Contracts.csproj", "{B4B910FD-8F3C-475B-9836-6823EF4F094B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBasedStorage", "FileBasedStorage\FileBasedStorage.csproj", "{921884E6-FBC7-4197-8AA7-BAA46C26FD09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B4B910FD-8F3C-475B-9836-6823EF4F094B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4B910FD-8F3C-475B-9836-6823EF4F094B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4B910FD-8F3C-475B-9836-6823EF4F094B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921884E6-FBC7-4197-8AA7-BAA46C26FD09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921884E6-FBC7-4197-8AA7-BAA46C26FD09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921884E6-FBC7-4197-8AA7-BAA46C26FD09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921884E6-FBC7-4197-8AA7-BAA46C26FD09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,9 +13,10 @@ namespace Images.Contracts.Commands
             Description = description;
             Date = date;
             Location = location;
+            ImageGuid = Guid.NewGuid();
         }
 
-        public Guid ImageGuid { get; set; }
+        public Guid ImageGuid { get; }
         public Stream Image { get; }
         public string[] Tags { get; }
         public string Description { get; }

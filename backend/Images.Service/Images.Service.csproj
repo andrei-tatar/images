@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CommandHandlers\UploadImageHandler.cs" />
     <Compile Include="CommandHandlers\UploadImageValidator.cs" />
+    <Compile Include="Entities\Image.cs" />
     <Compile Include="ImagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
