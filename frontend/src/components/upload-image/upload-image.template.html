@@ -1,0 +1,15 @@
+<div>
+    <md-chips ng-model="$ctrl.imageTags" name="tags" md-removable="ctrl.removable" placeholder="Image tags...">
+        <md-chip-template>
+            <strong>{{$chip}}</strong>
+        </md-chip-template>
+    </md-chips>
+    <md-input-container class="md-block">
+        <label>Description</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+        </div>
+    </md-input-container>
+</div>

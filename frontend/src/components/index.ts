@@ -1,2 +1,4 @@
-import './login/login.component'
-import './home/home.component'
+import './login'
+import './home'
+import './image-list'
+import './upload-image'

@@ -1,14 +1,12 @@
 import { TranslationService } from './../../services/translations.service';
 import { Component, Route } from '../../util';
 
-require('./home.style.scss');
-
 @Component('home', {
     template: require('./home.template.html'),
 })
 @Route({
     name: 'home',
-    url: '/',
+    url: '',
 })
 class HomeController {
     static $inject = ['translationService'];
