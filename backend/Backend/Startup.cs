@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.IO;
 using Backend.Middlewares;
 using Backend.WebApi;
 using Common;
@@ -7,7 +8,9 @@ using Images.Service;
 using MediatR;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Owin.StaticFiles;
 using Owin;
 using Unity;
 using Unity.Injection;
@@ -23,12 +26,22 @@ namespace Backend
             var container = BuildContainer();
 
             app.UseCors(CorsOptions.AllowAll);
+
+            var dataPath = Path.Combine(ConfigurationManager.AppSettings.Get("fs:storagePath"), "Images");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ServeUnknownFileTypes = true,
+                RequestPath = new PathString("/image"),
+                FileSystem = new PhysicalFileSystem(dataPath),
+            });
+
             app.Use<RequestContainerMiddleware>(container);
             app.Use<ExceptionMiddleware>();
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
             {
                 AccessTokenFormat = new FacebookTokenFormat()
             });
+            
             app.UseWebApi(new WebApiConfig(container));
         }
 
@@ -43,7 +56,7 @@ namespace Backend
             ImagesModule.Register(container);
 
             var dataPath = ConfigurationManager.AppSettings.Get("fs:storagePath");
-            container.RegisterType<IImageRepository, FileBasedImageRepository>(new InjectionConstructor(dataPath));
+            container.RegisterType<IImageRepository, FileBasedImageRepository>(new InjectionConstructor(Path.Combine(dataPath, "Images")));
             container.RegisterType(typeof(IStore<>), typeof(FileBasedStore<>), new InjectionConstructor(dataPath));
             return container;
         }

@@ -11,6 +11,8 @@ namespace Backend.Contracts.Queries
         {
             public Guid Id { get; set; }
             public string Link { get; set; }
+            public string UserId { get; set; }
+            public DateTime Date { get; set; }
         }
     }
 }

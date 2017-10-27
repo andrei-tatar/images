@@ -14,6 +14,13 @@ namespace Backend.Controllers
             var result = await Mediator.Send(new ListImages(page, pageSize));
             return new ListImagesResponse
             {
+                Images = result.Select(s => new ListImagesResponse.ListImage
+                {
+                    Id = s.Id,
+                    Link = $"image/{s.Id}",
+                    UserId = s.UserId,
+                    Date = s.Date,
+                }),
             };
         }
     }

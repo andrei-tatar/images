@@ -19,13 +19,14 @@ namespace Images.Service.QueryHandlers
         public Task<ListImage[]> Handle(ListImages message)
         {
             return Task.FromResult(_imageStore.Items
-                .Skip(message.Page*message.PageSize)
+                .Skip(message.Page * message.PageSize)
                 .Take(message.PageSize)
-                .Select(i =>
-                    new ListImage
-                    {
-                        Id = i.Id,
-                    })
+                .Select(i => new ListImage
+                {
+                    Id = i.Id,
+                    UserId = i.UserId,
+                    Date = i.Date,
+                })
                 .ToArray());
         }
     }

@@ -27,6 +27,12 @@ namespace Common
             container.RegisterType<IAsyncRequestHandler<TCommand>, CommandHandler<TCommand, TValidator, THandler>>();
         }
 
+        public static void RegisterQueryHandler<TRequest, TResponse, THandler>(this IUnityContainer container)
+            where THandler : IAsyncRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse>
+        {
+            container.RegisterType<IAsyncRequestHandler<TRequest, TResponse>, THandler>();
+        }
+
         public static Type GetCommandType(this IUnityContainer container, string commandName)
         {
             if (!container.IsRegistered<Dictionary<string, Type>>(ContainerRegisteredCommands)) return null;
