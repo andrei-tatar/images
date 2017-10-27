@@ -11,7 +11,7 @@ export class ImageService {
 
     uploadImage(image, request) {
         return this.httpService.upload({
-            url: `UploadImage`,
+            url: 'UploadImage',
             data: {
                 image,
                 request: this.httpService.toJson(request),
@@ -19,13 +19,32 @@ export class ImageService {
         });
     }
 
+    addComment(imageId: string, comment: string) {
+        return this.httpService.post({
+            url: 'AddComment',
+            data: {
+                imageId,
+                comment,
+            },
+        })
+    }
+
     listImages(page: number, pageSize: number) {
-        return this.httpService.get<{ images: { id: string, link: string }[] }>({
+        return this.httpService.get<{ images: any[] }>({
             url: 'ListImages',
             params: {
                 page,
                 pageSize,
             }
         }).then(r => r.data.images);
+    }
+
+    listImageComments(imageId: string) {
+        return this.httpService.get({
+            url: 'ListImageComments',
+            params: {
+                imageId,
+            }
+        }).then(r => r.data.comments);
     }
 }

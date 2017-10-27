@@ -28,6 +28,13 @@ export class HttpService {
         return this.$http<T>(options as ng.IRequestConfig);
     }
 
+    post<T = any>(options: IRequest) {
+        this.extendHeaders(options);
+        options.method = 'POST';
+        options.url = this.config.apiEndpoint + 'Command/' + options.url;
+        return this.$http<T>(options as ng.IRequestConfig);
+    }
+
     toJson(data: any): string {
         return this._upload.json(data);
     }
@@ -48,6 +55,6 @@ function apiEndpointFilter(config: IConfig) {
 interface IRequest {
     url: string;
     headers?: ng.IHttpRequestConfigHeaders;
-
+    data?: any,
     [key: string]: any;
 }

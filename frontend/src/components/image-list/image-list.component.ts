@@ -22,10 +22,11 @@ class ImageListController implements ng.IOnInit {
     }
 
     async $onInit() {
-        this.images = await this.imageService.listImages(0, 10);        
+        this.images = await this.imageService.listImages(0, 10);
     }
 
-    addComment(id: string, comment: string) {
-        debugger;
+    async addComment(image, comment: string) {
+        await this.imageService.addComment(image.id, comment);
+        image.comments = await this.imageService.listImageComments(image.id);
     }
 } 

@@ -1,7 +1,7 @@
 export const labels = {
     en: {
         locale: 'en-us',
-        title: 'Images Demo Application',
+        title: 'Gallery',
         language: 'Language',
         logout: 'Logout',
         'general.cancel': 'Cancel',
@@ -21,7 +21,7 @@ export const labels = {
     },
     ro: {
         locale: 'ro-ro',
-        title: 'Aplicatie Demo Imagini',
+        title: 'Galerie',
         language: 'Limba',
         logout: 'Ieșire',
         'general.cancel': 'Anulează',
