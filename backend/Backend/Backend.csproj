@@ -146,6 +146,7 @@
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FacebookTokenFormat.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
