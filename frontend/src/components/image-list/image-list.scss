@@ -16,16 +16,17 @@ image-list {
       width: 100%;
     }
 
-    .user-name {
-      &.comment {
-        font-weight: bold;
-      }
+    md-card-title .user-name {
       margin-left: 15px;
     }
 
     .comment {
       &:not(:first-child) {
         border-top: 1px solid #eee;
+      }
+
+      .info {
+        font-weight: bold;
       }
 
       padding-top: 5px;
@@ -42,12 +43,12 @@ image-list {
 
     md-card-actions {
       margin: 0;
-      padding: 15px;
+      padding: 8px 15px;
       background: #eee;
 
       .comment-input {
         padding: 5px;
-        font-size: 22px;
+        font-size: 18px;
         border: 1px solid lightgray;
         width: 100%;
       }

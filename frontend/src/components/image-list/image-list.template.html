@@ -14,7 +14,7 @@
                 <div class="comment" ng-repeat="comment in img.comments track by comment.id" layout="row" layout-align="start center">
                     <img class="user-image" ng-src="{{::comment.userId | getProfileImage}}">
                     <div class="text" layout="column">
-                        <span>{{::comment.userId | getUserName}} - {{comment.date | timeAgo}}</span>
+                        <span class="info">{{::comment.userId | getUserName}} - {{comment.date | timeAgo}}</span>
                         <span>{{comment.commentText}}</span>
                     </div>
                 </div>
