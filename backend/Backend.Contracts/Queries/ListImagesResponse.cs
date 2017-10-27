@@ -13,6 +13,15 @@ namespace Backend.Contracts.Queries
             public string Link { get; set; }
             public string UserId { get; set; }
             public DateTime Date { get; set; }
+            public IEnumerable<ListImageComment> Comments { get; set; }
+            
+            public class ListImageComment 
+            {
+                public Guid Id { get; set; }
+                public string UserId { get; set; }
+                public DateTime Date { get; set; }
+                public string CommentText { get; set; }
+            }
         }
     }
 }

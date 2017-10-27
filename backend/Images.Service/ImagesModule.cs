@@ -3,7 +3,6 @@ using Images.Contracts.Commands;
 using Images.Contracts.Queries;
 using Images.Service.CommandHandlers;
 using Images.Service.QueryHandlers;
-using MediatR;
 using Unity;
 
 namespace Images.Service
@@ -13,7 +12,9 @@ namespace Images.Service
         public static void Register(IUnityContainer container)
         {
             container.RegisterCommandHandler<UploadImage, UploadImageHandler, UploadImageValidator>();
-            container.RegisterQueryHandler<ListImages, ListImage[], ListImagesHandler>();
+            container.RegisterCommandHandler<AddComment, AddCommentHandler, AddCommentValidator>();
+            container.RegisterQueryHandler<ListImages, ListImages.Image[], ListImagesHandler>();
+            container.RegisterQueryHandler<ListImageComments, ListImageComments.Comment[], ListImageCommentsHandler>();
         }
     }
 }

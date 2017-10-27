@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using MediatR;
 
 namespace Images.Contracts.Queries
 {
-    public class ListImages : IRequest<ListImage[]>
+    public class ListImages : IRequest<ListImages.Image[]>
     {
         public ListImages(int page, int pageSize)
         {
@@ -13,12 +14,21 @@ namespace Images.Contracts.Queries
 
         public int Page { get; }
         public int PageSize { get; }
-    }
 
-    public class ListImage
-    {
-        public Guid Id { get; set; }
-        public string UserId { get; set; }
-        public DateTime Date { get; set; }
+        public class Image
+        {
+            public Guid Id { get; set; }
+            public string UserId { get; set; }
+            public DateTime Date { get; set; }
+            public IEnumerable<Comment> Comments { get; set; }
+
+            public class Comment
+            {
+                public Guid Id { get; set; }
+                public string UserId { get; set; }
+                public DateTime Date { get; set; }
+                public string CommentText { get; set; }
+            }
+        }
     }
 }

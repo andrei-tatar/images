@@ -34,5 +34,12 @@ namespace Backend.Controllers
             await Mediator.Send(command);
             return command.ImageGuid;
         }
+
+        [HttpPost]
+        public async Task AddComment(AddCommentRequest request)
+        {
+            var command = new AddComment(request.ImageId, request.Comment, User.Identity.Name, DateTime.UtcNow);
+            await Mediator.Send(command);
+        }
     }
 }
