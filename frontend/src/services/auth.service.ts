@@ -1,5 +1,6 @@
 
-import { Service } from "./../util";
+import { Service, Filter } from "./../util";
+import * as _ from "lodash";
 
 @Service('authService')
 export class AuthService {
@@ -35,14 +36,13 @@ export class AuthService {
             else {
                 defered.resolve(false);
             }
-            console.log(res);
         });
 
         return defered.promise;
     }
 
     logout() {
-        FB.logout(() => { 
+        FB.logout(() => {
             this.$state.go('login');
         });
     }
@@ -57,3 +57,27 @@ export class AuthService {
     }
 }
 
+Filter('getProfileImage', getProfileImageFilter)
+function getProfileImageFilter() {
+    return (userId) => `//graph.facebook.com/v2.10/${userId}/picture`;
+}
+
+Filter('getUserName', getUserNameFilter, '$q')
+function getUserNameFilter($q: ng.IQService) {
+    const map: { [key: string]: string } = {};
+    const resolve = _.memoize(async (userId) => {
+        const defered = $q.defer<string>();
+        FB.api(`/${userId}`, function (response) {
+            defered.resolve(response.name);
+        });
+        map[userId] = await defered.promise;
+    });
+
+    const filter = (userId) => {
+        resolve(userId);
+        return map[userId];
+    };
+
+    (filter as any).$stateful = true;
+    return filter;
+}

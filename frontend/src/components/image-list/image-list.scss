@@ -8,4 +8,20 @@ image-list {
     margin-top: 15px;
     font-size: 34px;
   }
+
+  md-card {
+    max-width: 450px;
+
+    .card-image {
+      width: 100%;
+    }
+
+    .user-name {
+      margin-left: 15px;
+    }
+
+    .user-image {
+      border-radius: 50%;
+    }
+  }
 }

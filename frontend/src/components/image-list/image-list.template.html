@@ -2,3 +2,14 @@
     +
     <md-tooltip>{{'image-list.upload-image'|translate}}</md-tooltip>
 </md-button>
+<md-content layout="column" layout-align="start center">
+    <md-card ng-repeat="img in $ctrl.images track by img.id">
+        <md-card-title layout="row" layout-align="start center">
+            <img class="user-image" ng-src="{{::img.userId | getProfileImage}}">
+            <span class="user-name">{{::img.userId | getUserName}} - {{img.date | timeAgo}}</span>
+        </md-card-title>
+        <md-card-content>
+            <img class="card-image" ng-src="{{::img.link | apiEndpoint}}">
+        </md-card-content>
+    </md-card>
+</md-content>

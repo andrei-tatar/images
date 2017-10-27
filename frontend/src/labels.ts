@@ -1,5 +1,6 @@
 export const labels = {
     en: {
+        locale: 'en-us',
         title: 'Images Demo Application',
         language: 'Language',
         logout: 'Logout',
@@ -18,6 +19,7 @@ export const labels = {
         'image-list.upload-image': 'Upload',
     },
     ro: {
+        locale: 'ro-ro',
         title: 'Aplicatie Demo Imagini',
         language: 'Limba',
         logout: 'Ieșire',

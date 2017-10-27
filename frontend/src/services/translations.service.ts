@@ -1,5 +1,7 @@
 import { labels } from '../labels';
 import { Service } from '../util';
+import * as moment from 'moment';
+import * as locales from 'moment/min/locales';
 
 @Service('translationService')
 export class TranslationService {
@@ -21,6 +23,7 @@ export class TranslationService {
         if (labels[value] && this._language !== value) {
             this._language = value;
             localStorage.setItem(this._storageKey, value);
+            moment.locale(labels[this._language].locale);
         }
     }
 

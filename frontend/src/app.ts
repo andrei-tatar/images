@@ -34,3 +34,4 @@ function appRun(
 import './components'
 import './directives'
 import './services'
+import './filters'

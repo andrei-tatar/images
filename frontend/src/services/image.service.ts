@@ -11,12 +11,21 @@ export class ImageService {
 
     uploadImage(image, request) {
         return this.httpService.upload({
-            method: 'POST',
-            url: `Command/UploadImage`,
+            url: `UploadImage`,
             data: {
                 image,
                 request: this.httpService.toJson(request),
             },
         });
+    }
+
+    listImages(page: number, pageSize: number) {
+        return this.httpService.get<{ images: { id: string, link: string }[] }>({
+            url: 'ListImages',
+            params: {
+                page,
+                pageSize,
+            }
+        }).then(r => r.data.images);
     }
 }

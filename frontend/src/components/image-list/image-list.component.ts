@@ -1,5 +1,7 @@
+import { ImageService } from './../../services/image.service';
 import { TranslationService } from './../../services/translations.service';
 import { Component, Route } from '../../util';
+import * as _ from 'lodash';
 
 @Component('imageList', {
     template: require('./image-list.template.html'),
@@ -8,5 +10,18 @@ import { Component, Route } from '../../util';
     name: 'home.imagelist',
     url: '/',
 })
-class ImageListController {
+class ImageListController implements ng.IOnInit {
+
+    static $inject = ['imageService'];
+
+    images: any[];
+
+    constructor(
+        private imageService: ImageService
+    ) {
+    }
+
+    async $onInit() {
+        this.images = await this.imageService.listImages(0, 10);        
+    }
 } 
