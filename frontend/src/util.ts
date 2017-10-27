@@ -34,6 +34,10 @@ export function Service(name: string) {
     }
 }
 
+export function Directive(name, factory: (...args: any[]) => ng.IDirective, ...inject: string[]) {
+    module.directive(name, [...inject, factory]);
+}
+
 export function Run(run: (...args: any[]) => void, ...inject: string[]) {
     module.run([...inject, run]);
 }

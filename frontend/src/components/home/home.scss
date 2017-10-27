@@ -1,7 +1,12 @@
 home {
   display: block;
 
+  > div {
+    padding-top: 85px;
+  }
+
   md-toolbar {
+    position: fixed;
     padding-left: 15px;
     padding-right: 15px;
   }

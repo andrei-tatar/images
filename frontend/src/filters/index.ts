@@ -1,1 +1,2 @@
 import './timeAgo';
+import './translate';

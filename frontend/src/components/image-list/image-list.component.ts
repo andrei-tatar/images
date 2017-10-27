@@ -24,4 +24,8 @@ class ImageListController implements ng.IOnInit {
     async $onInit() {
         this.images = await this.imageService.listImages(0, 10);        
     }
+
+    addComment(id: string, comment: string) {
+        debugger;
+    }
 } 

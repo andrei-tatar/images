@@ -3,7 +3,7 @@ image-list {
   position: relative;
 
   .upload-image {
-    position: absolute;
+    position: fixed;
     right: 25px;
     margin-top: 15px;
     font-size: 34px;
@@ -22,6 +22,19 @@ image-list {
 
     .user-image {
       border-radius: 50%;
+    }
+
+    md-card-actions {
+      margin: 0;
+      padding: 15px;
+      background: #eee;
+
+      .comment-input {
+        padding: 5px;
+        font-size: 22px;
+        border: 1px solid lightgray;
+        width: 100%;
+      }
     }
   }
 }

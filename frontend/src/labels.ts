@@ -17,6 +17,7 @@ export const labels = {
         'upload-image.error': 'Error: Something went wrong',
         'upload-image.success': 'Image uploaded',
         'image-list.upload-image': 'Upload',
+        'image-list.add-comment': 'Add a comment',
     },
     ro: {
         locale: 'ro-ro',
@@ -36,6 +37,7 @@ export const labels = {
         'upload-image.error': 'Erroare: Încărcarea a fost nereușită',
         'upload-image.success': 'Încărcare completă',
         'image-list.upload-image': 'Încarcă',
+        'image-list.add-comment': 'Adaugă comentariu',
     },
     _: {
         en: 'English',
