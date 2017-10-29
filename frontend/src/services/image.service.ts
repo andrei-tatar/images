@@ -29,6 +29,16 @@ export class ImageService {
         })
     }
 
+    rateImage(imageId: string, rate: number) {
+        return this.httpService.post({
+            url: 'RateImage',
+            data: {
+                imageId,
+                rate,
+            },
+        })
+    }
+
     listImages(page: number, pageSize: number) {
         return this.httpService.get<{ images: any[] }>({
             url: 'ListImages',

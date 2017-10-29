@@ -45,4 +45,10 @@ class ImageListController {
         this.images.push(...loaded);
         this._isLoading = false;
     }
+
+    async rateImage(image, rate: number) {
+        image.editRating = rate;
+        image.userRating = rate;
+        await this.imageService.rateImage(image.id, rate);
+    }
 } 

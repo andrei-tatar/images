@@ -18,7 +18,8 @@ export const labels = {
         'upload-image.success': 'Image uploaded',
         'image-list.upload-image': 'Upload',
         'image-list.add-comment': 'Add a comment',
-        'image-list.no-images': 'Looks like there are no images.<br>Click + to upload.'
+        'image-list.no-images': 'Looks like there are no images.<br>Click + to upload.',
+        'image-list.average-rating': 'Average: ',
     },
     ro: {
         locale: 'ro-ro',
@@ -39,7 +40,8 @@ export const labels = {
         'upload-image.success': 'Încărcare completă',
         'image-list.upload-image': 'Încarcă',
         'image-list.add-comment': 'Adaugă comentariu',
-        'image-list.no-images': 'Se pare ca nu există nici o imagine.<br>Apasă + pentru a adăuga.'
+        'image-list.no-images': 'Se pare ca nu există nici o imagine.<br>Apasă + pentru a adăuga.',
+        'image-list.average-rating': 'Media: ',
     },
     _: {
         en: 'English',
