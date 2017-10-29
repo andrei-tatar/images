@@ -6,18 +6,20 @@ namespace Images.Contracts.Queries
 {
     public class ListImages : IRequest<ListImages.Image[]>
     {
-        public ListImages(int page, int pageSize, string userId, ImageSortBy sortBy)
+        public ListImages(int page, int pageSize, string userId, ImageSortBy sortBy, string filter)
         {
             Page = page;
             PageSize = pageSize;
             UserId = userId;
             SortBy = sortBy;
+            Filter = filter;
         }
 
         public int Page { get; }
         public int PageSize { get; }
         public string UserId { get; }
         public ImageSortBy SortBy { get; }
+        public string Filter { get; }
 
         public enum ImageSortBy
         {

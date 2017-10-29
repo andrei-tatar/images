@@ -39,6 +39,18 @@ namespace Images.Service.QueryHandlers
                     throw new ArgumentOutOfRangeException();
             }
 
+            if (!string.IsNullOrWhiteSpace(message.Filter))
+            {
+                var words = message.Filter.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                query = query
+                    .Where(image =>
+                            words.Any(word =>
+                                image.Location.Contains(word) ||
+                                image.Description.Contains(word) ||
+                                image.Tags.Any(tag => tag.Contains(word)))
+                    );
+            }
+
             return Task.FromResult(query
                 .Skip(message.Page * message.PageSize)
                 .Take(message.PageSize)
@@ -69,7 +81,7 @@ namespace Images.Service.QueryHandlers
 
                     image.UserRating = userRating?.Rate;
                     image.AverageRating = imageRatings.Length == 0
-                        ? (double?) null
+                        ? (double?)null
                         : imageRatings.Select(s => s.Rate).Average();
                 })
                 .ToArray());

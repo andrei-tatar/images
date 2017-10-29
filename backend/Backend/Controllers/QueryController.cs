@@ -10,9 +10,10 @@ namespace Backend.Controllers
     public class QueryController : BaseController
     {
         [HttpGet]
-        public async Task<ListImagesResponse> ListImages([FromUri]ListImagesRequest request)
+        public async Task<ListImagesResponse> ListImages([FromUri] ListImagesRequest request)
         {
-            var query = new ListImages(request.Page, request.PageSize, User.Identity.Name, request.SortBy.Change<ListImages.ImageSortBy>());
+            var query = new ListImages(request.Page, request.PageSize, User.Identity.Name,
+                request.SortBy.Change<ListImages.ImageSortBy>(), request.Filter);
             var result = await Mediator.Send(query);
             return new ListImagesResponse
             {
@@ -26,13 +27,14 @@ namespace Backend.Controllers
                     UserRating = listImage.UserRating,
                     Location = listImage.Location,
                     Tags = listImage.Tags,
-                    Comments = listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
-                    {
-                        Id = listComment.Id,
-                        CommentText = listComment.CommentText,
-                        Date = listComment.Date,
-                        UserId = listComment.UserId,
-                    })
+                    Comments =
+                        listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
+                        {
+                            Id = listComment.Id,
+                            CommentText = listComment.CommentText,
+                            Date = listComment.Date,
+                            UserId = listComment.UserId,
+                        })
                 }),
             };
         }
