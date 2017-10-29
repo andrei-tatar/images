@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Common;
 using Images.Contracts.Commands;
 using Images.Service.Entities;
@@ -8,10 +9,10 @@ namespace Images.Service.CommandHandlers
     public class UploadImageHandler : IHandle<UploadImage>
     {
         private readonly IImageRepository _imageRepository;
-        private readonly IStore<Image> _imageStore;
+        private readonly IStore<Image, Guid> _imageStore;
 
         public UploadImageHandler(IImageRepository imageRepository,
-            IStore<Image> imageStore)
+            IStore<Image, Guid> imageStore)
         {
             _imageRepository = imageRepository;
             _imageStore = imageStore;

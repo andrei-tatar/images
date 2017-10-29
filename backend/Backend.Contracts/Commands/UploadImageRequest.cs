@@ -9,10 +9,4 @@ namespace Backend.Contracts.Commands
         public DateTime Date { get; set; }
         public string Location { get; set; }
     }
-
-    public class AddCommentRequest
-    {
-        public Guid ImageId { get; set; }
-        public string Comment { get; set; }
-    }
 }

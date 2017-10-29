@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddCommentRequest.cs" />
+    <Compile Include="Commands\RateImageRequest.cs" />
     <Compile Include="Commands\UploadImageRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ListImageCommentsResponse.cs" />

@@ -3,7 +3,7 @@ using Common;
 
 namespace Images.Service.Entities
 {
-    public class Comment : IEntity
+    public class Comment : IEntity<Guid>
     {
         public Guid Id { get; set; }
         public Guid ImageGuid { get; set; }

@@ -2,7 +2,7 @@
 
 namespace FileBasedStorage
 {
-    internal static class Utils
+    public static class Utils
     {
         public static void CreateDirectoryRecursive(string path)
         {

@@ -8,9 +8,9 @@ namespace Images.Service.CommandHandlers
 {
     public class AddCommentHandler : IHandle<AddComment>
     {
-        private readonly IStore<Comment> _commentsStore;
+        private readonly IStore<Comment, Guid> _commentsStore;
 
-        public AddCommentHandler(IStore<Comment> commentsStore)
+        public AddCommentHandler(IStore<Comment, Guid> commentsStore)
         {
             _commentsStore = commentsStore;
         }

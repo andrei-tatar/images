@@ -41,5 +41,12 @@ namespace Backend.Controllers
             var command = new AddComment(request.ImageId, request.Comment, User.Identity.Name, DateTime.UtcNow);
             await Mediator.Send(command);
         }
+
+        [HttpPost]
+        public async Task RateImage(RateImageRequest request)
+        {
+            var command = new RateImage(request.ImageId, request.Rate, User.Identity.Name);
+            await Mediator.Send(command);
+        }
     }
 }

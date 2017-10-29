@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Common;
 using Images.Contracts.Queries;
@@ -9,10 +10,10 @@ namespace Images.Service.QueryHandlers
 {
     public class ListImagesHandler : IAsyncRequestHandler<ListImages, ListImages.Image[]>
     {
-        private readonly IStore<Image> _imageStore;
-        private readonly IStore<Comment> _commentsStore;
+        private readonly IStore<Image, Guid> _imageStore;
+        private readonly IStore<Comment, Guid> _commentsStore;
 
-        public ListImagesHandler(IStore<Image> imageStore, IStore<Comment> commentsStore)
+        public ListImagesHandler(IStore<Image, Guid> imageStore, IStore<Comment, Guid> commentsStore)
         {
             _imageStore = imageStore;
             _commentsStore = commentsStore;

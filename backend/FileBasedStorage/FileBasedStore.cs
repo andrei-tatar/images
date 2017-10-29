@@ -7,13 +7,13 @@ using Newtonsoft.Json;
 
 namespace FileBasedStorage
 {
-    public class FileBasedStore<T> : IStore<T> where T : class, IEntity
+    public class FileBasedStore<T, TId> : IStore<T, TId> where T : class, IEntity<TId>
     {
         private readonly string _path;
 
         public FileBasedStore(string path)
         {
-            _path = Path.Combine(path, typeof(T).Name);
+            _path = Path.Combine(path, typeof(T).Name + "-" + typeof(TId).Name);
             Utils.CreateDirectoryRecursive(_path);
         }
 
@@ -46,7 +46,7 @@ namespace FileBasedStorage
             }
         }
 
-        public Task Delete(Guid id)
+        public Task Delete(TId id)
         {
             var fileName = GetFileName(id);
             File.Delete(fileName);
@@ -58,7 +58,7 @@ namespace FileBasedStorage
             return Add(item);
         }
 
-        private string GetFileName(Guid id)
+        private string GetFileName(TId id)
         {
             return Path.ChangeExtension(Path.Combine(_path, id.ToString()), "json");
         }

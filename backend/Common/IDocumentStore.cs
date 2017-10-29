@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IStore<T> where T : class, IEntity
+    public interface IStore<T, in TId> where T : class, IEntity<TId>
     {
         Task Add(T item);
         Task Update(T item);
-        Task Delete(Guid id);
+        Task Delete(TId id);
         IQueryable<T> Items { get; }
     }
 }

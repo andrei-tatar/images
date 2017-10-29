@@ -57,10 +57,14 @@
   <ItemGroup>
     <Compile Include="CommandHandlers\AddCommentHandler.cs" />
     <Compile Include="CommandHandlers\AddCommentValidator.cs" />
+    <Compile Include="CommandHandlers\RateImageHandler.cs" />
+    <Compile Include="CommandHandlers\RateImageValidator.cs" />
     <Compile Include="CommandHandlers\UploadImageHandler.cs" />
     <Compile Include="CommandHandlers\UploadImageValidator.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\ImageRating.cs" />
+    <Compile Include="Entities\ImageRatingId.cs" />
     <Compile Include="ImagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlers\ListImageCommentsHandler.cs" />

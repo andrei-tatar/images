@@ -23,25 +23,24 @@ namespace Backend
     {
         public void Configuration(IAppBuilder app)
         {
+            Utils.CreateDirectoryRecursive(ImageRepositoryPath);
+
             var container = BuildContainer();
 
             app.UseCors(CorsOptions.AllowAll);
-
-            var dataPath = Path.Combine(ConfigurationManager.AppSettings.Get("fs:storagePath"), "Images");
             app.UseStaticFiles(new StaticFileOptions
             {
                 ServeUnknownFileTypes = true,
                 RequestPath = new PathString("/image"),
-                FileSystem = new PhysicalFileSystem(dataPath),
+                FileSystem = new PhysicalFileSystem(ImageRepositoryPath),
             });
-
             app.Use<RequestContainerMiddleware>(container);
             app.Use<ExceptionMiddleware>();
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
             {
                 AccessTokenFormat = new FacebookTokenFormat()
             });
-            
+
             app.UseWebApi(new WebApiConfig(container));
         }
 
@@ -55,10 +54,12 @@ namespace Backend
                 t => container.IsRegistered(t) ? container.ResolveAll(t) : new object[0]);
             ImagesModule.Register(container);
 
-            var dataPath = ConfigurationManager.AppSettings.Get("fs:storagePath");
-            container.RegisterType<IImageRepository, FileBasedImageRepository>(new InjectionConstructor(Path.Combine(dataPath, "Images")));
-            container.RegisterType(typeof(IStore<>), typeof(FileBasedStore<>), new InjectionConstructor(dataPath));
+            container.RegisterType<IImageRepository, FileBasedImageRepository>(new InjectionConstructor(ImageRepositoryPath));
+            container.RegisterType(typeof(IStore<,>), typeof(FileBasedStore<,>), new InjectionConstructor(DataPath));
             return container;
         }
+
+        private static readonly string DataPath = ConfigurationManager.AppSettings.Get("fs:storagePath");
+        private static readonly string ImageRepositoryPath = Path.Combine(DataPath, "Images");
     }
 }
