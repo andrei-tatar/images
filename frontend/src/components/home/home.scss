@@ -1,12 +1,16 @@
 home {
-  display: block;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 
-  > div {
-    padding-top: 85px;
+  > div[ui-view] {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
   }
 
   md-toolbar {
-    position: fixed;
     padding-left: 15px;
     padding-right: 15px;
   }
