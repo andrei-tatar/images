@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 using System.Security.Claims;
 using Facebook;
@@ -14,18 +15,28 @@ namespace Backend
 
         public AuthenticationTicket Unprotect(string protectedText)
         {
-            var fb = new FacebookClient(protectedText);
-            var app = fb.Get<JsonObject>("/app");
-            if (app["id"].ToString() != ConfigurationManager.AppSettings.Get("fb:appid"))
-                return null;
-
-            var result = fb.Get<JsonObject>("/me");
-            var identity = new ClaimsIdentity(new[]
+            try
             {
-                new Claim(ClaimTypes.Name, result["id"].ToString(), null, "Facebook")
-            }, "Bearer");
+                if (string.IsNullOrWhiteSpace(protectedText))
+                    return null;
 
-            return new AuthenticationTicket(identity, new AuthenticationProperties());
+                var fb = new FacebookClient(protectedText);
+                var app = fb.Get<JsonObject>("/app");
+                if (app["id"].ToString() != ConfigurationManager.AppSettings.Get("fb:appid"))
+                    return null;
+
+                var result = fb.Get<JsonObject>("/me");
+                var identity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, result["id"].ToString(), null, "Facebook")
+                }, "Bearer");
+
+                return new AuthenticationTicket(identity, new AuthenticationProperties());
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
