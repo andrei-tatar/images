@@ -13,5 +13,10 @@ home {
   md-toolbar {
     padding-left: 15px;
     padding-right: 15px;
+    
+    .md-button.md-icon-button{
+      margin: 0;
+      padding: 0;
+    }
   }
 }

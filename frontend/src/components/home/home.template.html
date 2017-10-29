@@ -1,16 +1,27 @@
 <md-toolbar layout="row" layout-align="space-between center">
-    <h2 flex>{{'title'|translate}}</h2>
+    <h2>{{'title'|translate}}</h2>
 
     <div layout="row" layout-align="start center">
         <div ui-view="toolbar" layout="row" layout-align="start center">
         </div>
-        <md-button ng-if="$ctrl.isLoggedIn" ng-click="$ctrl.logout()">{{'logout'|translate}}</md-button>
-        <md-input-container>
-            <md-select ng-model="$ctrl.selectedLanguage">
+        <md-button ng-if="$ctrl.isLoggedIn" class="md-icon-button" ng-click="$ctrl.logout()">
+            <md-icon md-font-library="material-icons">exit_to_app</md-icon>
+            <md-tooltip>{{'logout'|translate}}</md-tooltip>
+        </md-button>
+        <md-menu>
+            <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                <md-icon md-font-library="material-icons">flag</md-icon>
                 <md-tooltip>{{'language'|translate}}</md-tooltip>
-                <md-option ng-repeat="language in $ctrl.languages" value="{{language}}">{{language|translate}}</md-option>
-            </md-select>
-        </md-input-container>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item ng-repeat="language in $ctrl.languages">
+                    <md-button ng-click="$ctrl.selectedLanguage=language">
+                        <md-icon md-font-library="material-icons" ng-style="{opacity:language===$ctrl.selectedLanguage?1:0}">check</md-icon>
+                        {{language|translate}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
     </div>
 </md-toolbar>
 <div ui-view scroll-top>
