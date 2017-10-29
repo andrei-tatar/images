@@ -25,6 +25,7 @@ namespace Backend.Controllers
                     AverageRating = listImage.AverageRating,
                     UserRating = listImage.UserRating,
                     Location = listImage.Location,
+                    Tags = listImage.Tags,
                     Comments = listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
                     {
                         Id = listComment.Id,
