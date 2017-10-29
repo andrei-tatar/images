@@ -16,7 +16,7 @@
                         <i class="material-icons" ng-bind="i<=img.editRating&&img.editRating? 'star': 'star_border'"></i>
                     </md-button>
                 </div>
-                <span>{{'image-list.average-rating'|translate}}{{img.averageRating || '?'}}/5</span>
+                <span>{{'image-list.average-rating'|translate}}{{img.averageRating? (img.averageRating|number:1) : '?'}}/5</span>
             </div>
         </md-card-title>
         <md-card-content layout="column">

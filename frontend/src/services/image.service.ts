@@ -57,4 +57,13 @@ export class ImageService {
             }
         }).then(r => r.data.comments);
     }
+
+    getImageAverageRating(imageId: string) {
+        return this.httpService.get({
+            url: 'GetImageAverageRating',
+            params: {
+                imageId,
+            },
+        }).then(r => r.data);
+    }
 }

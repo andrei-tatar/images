@@ -16,6 +16,7 @@ namespace Images.Service
             container.RegisterCommandHandler<RateImage, RateImageHandler, RateImageValidator>();
             container.RegisterQueryHandler<ListImages, ListImages.Image[], ListImagesHandler>();
             container.RegisterQueryHandler<ListImageComments, ListImageComments.Comment[], ListImageCommentsHandler>();
+            container.RegisterQueryHandler<GetImageAverageRating, double?, GetImageAverageRatingHandler>();
         }
     }
 }

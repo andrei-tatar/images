@@ -50,5 +50,6 @@ class ImageListController {
         image.editRating = rate;
         image.userRating = rate;
         await this.imageService.rateImage(image.id, rate);
+        image.averageRating = await this.imageService.getImageAverageRating(image.id);
     }
 } 

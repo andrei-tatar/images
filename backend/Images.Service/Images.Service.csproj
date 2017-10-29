@@ -67,6 +67,7 @@
     <Compile Include="Entities\ImageRatingId.cs" />
     <Compile Include="ImagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlers\GetImageAverageRatingHandler.cs" />
     <Compile Include="QueryHandlers\ListImageCommentsHandler.cs" />
     <Compile Include="QueryHandlers\ListImagesHandler.cs" />
   </ItemGroup>

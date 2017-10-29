@@ -49,5 +49,11 @@ namespace Backend.Controllers
                 })
             };
         }
+
+        [HttpGet]
+        public async Task<double?> GetImageAverageRating(Guid imageId)
+        {
+            return await Mediator.Send(new GetImageAverageRating(imageId));
+        }
     }
 }
