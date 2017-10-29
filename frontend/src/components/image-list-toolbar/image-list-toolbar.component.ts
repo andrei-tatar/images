@@ -7,6 +7,13 @@ import { Component } from './../../util';
 class ImageListToolbarComponent {
     static $inject = ['imageService'];
 
+    get filter() {
+        return this.imageService.filter;
+    }
+    set filter(value: string) {
+        this.imageService.filter = value;
+    }
+
     get sortBy() {
         return this.imageService.sortBy;
     }

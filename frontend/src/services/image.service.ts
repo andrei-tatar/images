@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 export class ImageService {
     private static readonly key = 'images:SortBy';
     private _sortBy: string;
+    private _filter = '';
     private _handlers: (() => void)[] = [];
 
     get sortBy() {
@@ -17,6 +18,15 @@ export class ImageService {
             this._sortBy = value;
             this._handlers.forEach(callback => callback());
         }
+    }
+
+    get filter() {
+        return this._filter;
+    }
+    set filter(value: string) {
+        if (this._filter === value) return;
+        this._filter = value;
+        this._handlers.forEach(callback => callback());
     }
 
     static $inject = ['httpService'];
@@ -69,6 +79,7 @@ export class ImageService {
                 page,
                 pageSize,
                 sortBy: this._sortBy,
+                filter: this._filter,
             }
         }).then(r => r.data.images);
     }
