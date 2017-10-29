@@ -10,8 +10,8 @@ namespace Images.Service.CommandHandlers
             RuleFor(x => x.UserId).NotEmpty().WithErrorCode("required");
             RuleFor(x => x.ImageId).NotEmpty().WithErrorCode("required");
             RuleFor(x => x.Rate)
-                .GreaterThanOrEqualTo(0).WithErrorCode("invalid_range")
-                .LessThanOrEqualTo(10).WithErrorCode("invalid_range");
+                .GreaterThanOrEqualTo(1).WithErrorCode("invalid_range")
+                .LessThanOrEqualTo(5).WithErrorCode("invalid_range");
         }
     }
 }

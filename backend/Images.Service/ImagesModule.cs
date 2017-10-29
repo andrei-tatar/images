@@ -13,6 +13,7 @@ namespace Images.Service
         {
             container.RegisterCommandHandler<UploadImage, UploadImageHandler, UploadImageValidator>();
             container.RegisterCommandHandler<AddComment, AddCommentHandler, AddCommentValidator>();
+            container.RegisterCommandHandler<RateImage, RateImageHandler, RateImageValidator>();
             container.RegisterQueryHandler<ListImages, ListImages.Image[], ListImagesHandler>();
             container.RegisterQueryHandler<ListImageComments, ListImageComments.Comment[], ListImageCommentsHandler>();
         }
