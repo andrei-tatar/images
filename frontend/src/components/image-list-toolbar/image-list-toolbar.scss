@@ -1,0 +1,15 @@
+image-list-toolbar {
+  .search-box {
+    height: 35px;
+    padding: 0px 15px;
+    border: 0px;
+    border-radius: 15px;
+    outline: none;
+    width: 100px;
+    transition: width .3s ease-in-out;
+
+    &:focus {
+      width: 210px;
+    }
+  }
+}
