@@ -7,7 +7,10 @@
         <md-card-title layout="row" layout-align="space-between center">
             <div layout="row" layout-align="start center">
                 <img class="user-image" ng-src="{{::img.userId | getProfileImage}}">
-                <span class="user-name">{{::img.userId | getUserName}} - {{img.date | timeAgo}}</span>
+                <div class="image-details" layout="column">
+                    <span class="user-name">{{::img.userId | getUserName}} - {{img.date | timeAgo}}</span>
+                    <span>{{'image-list.location'|translate}}{{::img.location}}</span>
+                </div>
             </div>
             <div layout="column" layout-align="center end">
                 <div layout="row" class="rate-buttons">
