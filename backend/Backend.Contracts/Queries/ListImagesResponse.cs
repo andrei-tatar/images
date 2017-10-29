@@ -17,6 +17,7 @@ namespace Backend.Contracts.Queries
             public double? AverageRating { get; set; }
             public int? UserRating { get; set; }
             public string Location { get; set; }
+            public string Description { get; set; }
             public string[] Tags { get; set; }
 
             public class ListImageComment

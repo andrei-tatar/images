@@ -27,6 +27,7 @@ namespace Backend.Controllers
                     UserRating = listImage.UserRating,
                     Location = listImage.Location,
                     Tags = listImage.Tags,
+                    Description = listImage.Description,
                     Comments =
                         listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
                         {

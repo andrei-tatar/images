@@ -24,6 +24,7 @@
             </div>
         </md-card-title>
         <md-card-content layout="column">
+            <p>{{'image-list.description'|translate}}{{::img.description}}</p>
             <img class="card-image" ng-src="{{::img.link | apiEndpoint}}">
             <div>
                 <div class="comment" ng-repeat="comment in img.comments track by comment.id" layout="row" layout-align="start center">

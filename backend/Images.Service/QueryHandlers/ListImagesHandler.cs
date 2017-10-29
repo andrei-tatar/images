@@ -60,6 +60,7 @@ namespace Images.Service.QueryHandlers
                     UserId = image.UserId,
                     Date = image.Date,
                     Location = image.Location,
+                    Description = image.Description,
                     Tags = image.Tags,
                     Comments = _commentsStore
                         .Items
