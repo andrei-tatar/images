@@ -1,6 +1,6 @@
 import { IRouteConfig } from './../../util';
 import { AuthService } from './../../services/auth.service';
-import { Run } from "../../util";
+import { Run } from '../../util';
 
 Run(($transitions, auth: AuthService) => {
     $transitions.onBefore({}, async transition => {

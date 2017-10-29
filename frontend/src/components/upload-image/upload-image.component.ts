@@ -1,9 +1,9 @@
 import { ToastService } from './../../services/toast.service';
 import { TranslationService } from './../../services/translations.service';
 import { ImageService } from './../../services/image.service';
-import { handleValidationErrors } from "./../../util";
-import { Component } from "./../../util";
-import { Route } from "./../../util";
+import { handleValidationErrors } from './../../util';
+import { Component } from './../../util';
+import { Route } from './../../util';
 
 @Component('uploadImage', {
     template: require('./upload-image.template.html'),

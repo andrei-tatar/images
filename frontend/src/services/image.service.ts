@@ -1,25 +1,35 @@
 import { HttpService } from './http.service';
-import { Service } from "../util";
+import { Service } from '../util';
+import * as _ from 'lodash';
 
 @Service('imageService')
 export class ImageService {
     private static readonly key = 'images:SortBy';
     private _sortBy: string;
+    private _handlers: (() => void)[] = [];
 
     get sortBy() {
         return this._sortBy;
     }
     set sortBy(value: string) {
-        if (value === 'location' || value === 'date') {
+        if ((value === 'location' || value === 'date') && value !== this._sortBy) {
             localStorage.setItem(ImageService.key, value);
             this._sortBy = value;
+            this._handlers.forEach(callback => callback());
         }
     }
+
+    static $inject = ['httpService'];
 
     constructor(
         private httpService: HttpService,
     ) {
-        this.sortBy = localStorage.getItem(ImageService.key) || 'date';
+        this._sortBy = localStorage.getItem(ImageService.key) || 'date';
+    }
+
+    onRefresh(callback: () => void): () => void {
+        this._handlers.push(callback);
+        return () => _.pull(this._handlers, callback);
     }
 
     uploadImage(image, request) {
@@ -58,6 +68,7 @@ export class ImageService {
             params: {
                 page,
                 pageSize,
+                sortBy: this._sortBy,
             }
         }).then(r => r.data.images);
     }

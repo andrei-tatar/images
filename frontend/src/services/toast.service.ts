@@ -1,5 +1,5 @@
 import { TranslationService } from './translations.service';
-import { Service } from "./../util";
+import { Service } from './../util';
 
 @Service('toastService')
 export class ToastService {

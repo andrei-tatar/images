@@ -10,12 +10,13 @@
                 <div class="image-details" layout="column">
                     <span class="user-name">{{::img.userId | getUserName}} - {{img.date | timeAgo}}</span>
                     <span>{{'image-list.location'|translate}}{{::img.location}}</span>
+                    <span>{{'image-list.tags'|translate}}<span ng-repeat="tag in img.tags">{{$first?'':','}}{{tag}}</span></span>
                 </div>
             </div>
             <div layout="column" layout-align="center end">
                 <div layout="row" class="rate-buttons">
                     <md-button class="md-icon-button" ng-repeat="i in [1,2,3,4,5]" ng-init="img.editRating=img.userRating" ng-mouseover="img.editRating=i"
-                        ng-mouseleave="img.editRating=img.userRating" ng-click="$ctrl.rateImage(img, i)">
+                        ng-mouseleave="img.editRating=img.userRating" ng-click="$ctrl.rateImage(img, i)" aria-label="rate">
                         <md-icon md-font-library="material-icons" ng-bind="i<=img.editRating&&img.editRating? 'star': 'star_border'"></md-icon>
                     </md-button>
                 </div>

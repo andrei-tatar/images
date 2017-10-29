@@ -1,6 +1,6 @@
 
-import { Service, Filter } from "./../util";
-import * as _ from "lodash";
+import { Service, Filter } from './../util';
+import * as _ from 'lodash';
 
 @Service('authService')
 export class AuthService {

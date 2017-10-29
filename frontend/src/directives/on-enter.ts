@@ -1,12 +1,12 @@
-import { Service, Directive } from "../util";
+import { Directive } from '../util';
 
 Directive('onEnter', () => ({
-    restrict: "A",
+    restrict: 'A',
     scope: {
-        action: "&onEnter"
+        action: '&onEnter'
     },
     link: function (scope, element, attrs) {
-        element.on("keydown keypress", function (event) {
+        element.on('keydown keypress', function (event) {
             if (event.which === 13) {
                 scope.$apply((scope as any).action);
                 event.preventDefault();

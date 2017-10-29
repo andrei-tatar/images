@@ -1,4 +1,4 @@
-import { Filter } from "../util";
+import { Filter } from '../util';
 import * as moment from 'moment';
 
 Filter('timeAgo', timeAgoFilter)

@@ -1,5 +1,5 @@
 import { AuthService } from './auth.service';
-import { Service, Filter } from "./../util";
+import { Service, Filter } from './../util';
 
 @Service('httpService')
 export class HttpService {
