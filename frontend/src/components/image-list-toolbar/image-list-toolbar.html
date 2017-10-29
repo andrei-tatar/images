@@ -1,0 +1,8 @@
+<md-button class="md-icon-button" ng-class="{'md-accent': $ctrl.sortBy==='location'}" ng-click="$ctrl.sortBy='location'">
+    <md-icon md-font-library="material-icons">sort_by_alpha</md-icon>
+    <md-tooltip>{{'image-list-toolbar.sort-by-location'|translate}}</md-tooltip>
+</md-button>
+<md-button class="md-icon-button" ng-class="{'md-accent': $ctrl.sortBy==='date'}" ng-click="$ctrl.sortBy='date'">
+    <md-icon md-font-library="material-icons">update</md-icon>
+    <md-tooltip>{{'image-list-toolbar.sort-by-date'|translate}}</md-tooltip>
+</md-button>

@@ -1,4 +1,5 @@
 import './login'
 import './home'
 import './image-list'
+import './image-list-toolbar'
 import './upload-image'

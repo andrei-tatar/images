@@ -17,7 +17,11 @@ export function Component(name: string, value: ng.IComponentOptions) {
 export function Route(route: IRouteConfig) {
     return function (target) {
         const resolved = (name) => {
-            route.component = name;
+            if (route.views) {
+                route.views[''] = name;
+            } else {
+                route.component = name;
+            }
             module.config(['$stateRegistryProvider', $stateRegistry => $stateRegistry.register(route)]);
         }
         if (target.__componentName) {

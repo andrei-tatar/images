@@ -1,4 +1,5 @@
 import { ImageService } from './../../services/image.service';
+import component = require("./../home/home.component")
 import { TranslationService } from './../../services/translations.service';
 import { Component, Route } from '../../util';
 import * as _ from 'lodash';
@@ -9,6 +10,11 @@ import * as _ from 'lodash';
 @Route({
     name: 'home.imagelist',
     url: '/',
+    views: {
+        'toolbar': {
+            component: 'imageListToolbar',
+        }
+    }
 })
 class ImageListController {
 

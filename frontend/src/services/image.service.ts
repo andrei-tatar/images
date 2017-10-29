@@ -3,10 +3,23 @@ import { Service } from "../util";
 
 @Service('imageService')
 export class ImageService {
+    private static readonly key = 'images:SortBy';
+    private _sortBy: string;
+
+    get sortBy() {
+        return this._sortBy;
+    }
+    set sortBy(value: string) {
+        if (value === 'location' || value === 'date') {
+            localStorage.setItem(ImageService.key, value);
+            this._sortBy = value;
+        }
+    }
 
     constructor(
         private httpService: HttpService,
     ) {
+        this.sortBy = localStorage.getItem(ImageService.key) || 'date';
     }
 
     uploadImage(image, request) {
