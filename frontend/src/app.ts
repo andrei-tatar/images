@@ -5,11 +5,12 @@ import 'angular-material/angular-material.css';
 import 'ng-file-upload';
 import 'angular-inview';
 import 'angular-messages';
+import 'angular-sanitize';
 
 require('./app.scss');
 
 export const Module = angular
-    .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload', 'ngMessages', 'angular-inview'])
+    .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload', 'ngMessages', 'angular-inview', 'ngSanitize'])
     .config(appConfig)
     .run(appRun)
     .constant('config', {

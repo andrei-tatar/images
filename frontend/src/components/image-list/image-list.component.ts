@@ -19,6 +19,9 @@ class ImageListController {
 
     hasMore = true;
     images: any[] = [];
+    get noImages() {
+        return !this.hasMore && this.images.length === 0;
+    }
 
     constructor(
         private imageService: ImageService

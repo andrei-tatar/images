@@ -24,5 +24,6 @@
             <input class="comment-input" ng-model="img.newComment" placeholder="{{'image-list.add-comment'|translate}}" on-enter="$ctrl.addComment(img, img.newComment); img.newComment=''">
         </md-card-actions>
     </md-card>
+    <h3 ng-if="$ctrl.noImages" ng-bind-html="'image-list.no-images'|translate"></h3>
     <md-progress-circular ng-if="$ctrl.hasMore" in-view="$ctrl.loadMore()" md-mode="indeterminate"></md-progress-circular>
 </md-content>
