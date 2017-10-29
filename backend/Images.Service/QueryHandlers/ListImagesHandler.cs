@@ -21,9 +21,9 @@ namespace Images.Service.QueryHandlers
         public Task<ListImages.Image[]> Handle(ListImages message)
         {
             return Task.FromResult(_imageStore.Items
+                .OrderBy(i => i.Date)
                 .Skip(message.Page * message.PageSize)
                 .Take(message.PageSize)
-                .OrderBy(i => i.Date)
                 .Select(i => new ListImages.Image
                 {
                     Id = i.Id,

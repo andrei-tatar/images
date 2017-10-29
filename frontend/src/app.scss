@@ -4,3 +4,8 @@ body div[ui-view] {
   flex-direction: column;
   display: flex;
 }
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

@@ -10,23 +10,36 @@ import * as _ from 'lodash';
     name: 'home.imagelist',
     url: '/',
 })
-class ImageListController implements ng.IOnInit {
+class ImageListController {
 
     static $inject = ['imageService'];
+    private _isLoading = false;
+    private _page = 0;
+    private readonly _pageSize = 2;
 
-    images: any[];
+    hasMore = true;
+    images: any[] = [];
 
     constructor(
         private imageService: ImageService
     ) {
     }
 
-    async $onInit() {
-        this.images = await this.imageService.listImages(0, 10);
-    }
-
     async addComment(image, comment: string) {
         await this.imageService.addComment(image.id, comment);
         image.comments = await this.imageService.listImageComments(image.id);
+    }
+
+    async loadMore() {
+        if (this._isLoading || !this.hasMore) return;
+        this._isLoading = true;
+
+        var loaded = await this.imageService.listImages(this._page, this._pageSize);
+        this._page++;
+        if (loaded.length < this._pageSize) {
+            this.hasMore = false;
+        }
+        this.images.push(...loaded);
+        this._isLoading = false;
     }
 } 

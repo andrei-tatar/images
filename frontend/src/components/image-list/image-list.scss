@@ -9,8 +9,17 @@ image-list {
     font-size: 34px;
   }
 
+  md-content {
+    overflow: hidden;
+
+    md-progress-circular {
+      margin: 15px;
+    }
+  }
+
   md-card {
     max-width: 900px !important;
+    animation: fadein 1s;
 
     .card-image {
       width: 100%;

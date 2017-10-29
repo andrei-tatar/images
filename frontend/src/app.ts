@@ -3,12 +3,13 @@ import '@uirouter/angularjs';
 import 'angular-material';
 import 'angular-material/angular-material.css';
 import 'ng-file-upload';
+import 'angular-inview';
 import 'angular-messages';
 
 require('./app.scss');
 
 export const Module = angular
-    .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload', 'ngMessages'])
+    .module('AzetsApp', ['ngMaterial', 'ui.router', 'ngFileUpload', 'ngMessages', 'angular-inview'])
     .config(appConfig)
     .run(appRun)
     .constant('config', {
