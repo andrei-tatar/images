@@ -1,4 +1,14 @@
-<div>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
-</div>
+<md-content layout="column" layout-align="start center">
+    <md-card>
+        <md-card-title>
+            <span class="md-headline">{{'login.title'|translate}}</span>
+
+        </md-card-title>
+        <md-card-content>
+            <p>{{'login.message'|translate}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="$ctrl.login()">{{'login.button'|translate}}</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

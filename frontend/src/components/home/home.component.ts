@@ -19,6 +19,9 @@ class HomeController {
     set selectedLanguage(value: string) {
         this.translationService.selectedLanguage = value;
     }
+    get isLoggedIn() {
+        return this.authService.isLoggedInFlag;
+    }
 
     constructor(
         private translationService: TranslationService,

@@ -5,10 +5,11 @@ import { Component, Route } from '../../util';
     template: require('./login.template.html')
 })
 @Route({
-    name: 'login',
+    name: 'home.login',
     url: '/login',
+    requiresLogin: false,
 })
-class LoginController implements ng.IOnInit, ng.IOnDestroy {
+class LoginController implements ng.IOnInit {
 
     static $inject = ['authService', '$state'];
 
@@ -20,15 +21,20 @@ class LoginController implements ng.IOnInit, ng.IOnDestroy {
     }
 
     $onInit(): void {
-        (window as any).checkLoginState = () => this.checkLoginState();
+        this.checkLoginState();
     }
 
-    $onDestroy(): void {
-        delete (window as any).checkLoginState;
+    async login() {
+        FB.login(response => {
+            if (!this.checkLoginState()) {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        });
     }
 
-    async checkLoginState() {
+    private async checkLoginState() {
         const isLoggedIn = await this.authService.isLoggedIn();
         if (isLoggedIn) this.$state.go('home.imagelist');
+        return isLoggedIn;
     }
 }

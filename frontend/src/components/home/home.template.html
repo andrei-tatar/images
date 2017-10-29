@@ -2,7 +2,7 @@
     <h2 flex>{{'title'|translate}}</h2>
 
     <div layout="row">
-        <md-button ng-click="$ctrl.logout()">{{'logout'|translate}}</md-button>
+        <md-button ng-if="$ctrl.isLoggedIn" ng-click="$ctrl.logout()">{{'logout'|translate}}</md-button>
         <md-input-container>
             <md-select ng-model="$ctrl.selectedLanguage">
                 <md-tooltip>{{'language'|translate}}</md-tooltip>

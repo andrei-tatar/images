@@ -8,6 +8,7 @@ export class AuthService {
     static $inject = ['$q', '$state']
 
     private _token: string;
+    private _isLoggedIn = false;
 
     constructor(
         private $q: ng.IQService,
@@ -25,12 +26,17 @@ export class AuthService {
         return this._token;
     }
 
+    get isLoggedInFlag() {
+        return this._isLoggedIn;
+    }
+
     isLoggedIn() {
         const defered = this.$q.defer<boolean>();
 
         FB.getLoginStatus(res => {
             if (res.status === 'connected') {
                 this._token = res.authResponse.accessToken;
+                this._isLoggedIn = true;
                 defered.resolve(true);
             }
             else {
@@ -42,8 +48,9 @@ export class AuthService {
     }
 
     logout() {
+        this._isLoggedIn = false;
         FB.logout(() => {
-            this.$state.go('login');
+            this.$state.go('home.login');
         });
     }
 

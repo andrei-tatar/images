@@ -20,6 +20,9 @@ export const labels = {
         'image-list.add-comment': 'Add a comment',
         'image-list.no-images': 'Looks like there are no images.<br>Click + to upload.',
         'image-list.average-rating': 'Average: ',
+        'login.title': 'Login',
+        'login.message': 'To login into our app, you need to use your Facebook account',
+        'login.button': 'Login with Facebook',
     },
     ro: {
         locale: 'ro-ro',
@@ -42,6 +45,9 @@ export const labels = {
         'image-list.add-comment': 'Adaugă comentariu',
         'image-list.no-images': 'Se pare ca nu există nici o imagine.<br>Apasă + pentru a adăuga.',
         'image-list.average-rating': 'Media: ',
+        'login.title': 'Logare',
+        'login.message': 'Pentru a putea folosi aplicația, trebuie să folosești contul de Facebook',
+        'login.button': 'Logare cu Facebook',
     },
     _: {
         en: 'English',

@@ -14,7 +14,7 @@ export function Component(name: string, value: ng.IComponentOptions) {
     }
 }
 
-export function Route(route: ng.ui.IState) {
+export function Route(route: IRouteConfig) {
     return function (target) {
         const resolved = (name) => {
             route.component = name;
@@ -26,6 +26,10 @@ export function Route(route: ng.ui.IState) {
             target.__componentNameResolved = resolved;
         }
     }
+}
+
+export interface IRouteConfig extends ng.ui.IState {
+    requiresLogin?: boolean;
 }
 
 export function Service(name: string) {

@@ -1,1 +1,2 @@
-import './login.component'
+import './login.component';
+require('./login.scss');
