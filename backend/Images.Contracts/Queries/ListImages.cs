@@ -6,14 +6,16 @@ namespace Images.Contracts.Queries
 {
     public class ListImages : IRequest<ListImages.Image[]>
     {
-        public ListImages(int page, int pageSize)
+        public ListImages(int page, int pageSize, string userId)
         {
             Page = page;
             PageSize = pageSize;
+            UserId = userId;
         }
 
         public int Page { get; }
         public int PageSize { get; }
+        public string UserId { get; }
 
         public class Image
         {
@@ -21,6 +23,8 @@ namespace Images.Contracts.Queries
             public string UserId { get; set; }
             public DateTime Date { get; set; }
             public IEnumerable<Comment> Comments { get; set; }
+            public double? AverageRating { get; set; }
+            public int? UserRating { get; set; }
 
             public class Comment
             {

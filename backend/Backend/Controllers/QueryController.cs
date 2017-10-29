@@ -12,7 +12,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ListImagesResponse> ListImages(int page, int pageSize)
         {
-            var result = await Mediator.Send(new ListImages(page, pageSize));
+            var result = await Mediator.Send(new ListImages(page, pageSize, User.Identity.Name));
             return new ListImagesResponse
             {
                 Images = result.Select(listImage => new ListImagesResponse.ListImage
@@ -21,6 +21,8 @@ namespace Backend.Controllers
                     Link = $"image/{listImage.Id}",
                     UserId = listImage.UserId,
                     Date = listImage.Date,
+                    AverageRating = listImage.AverageRating,
+                    UserRating =  listImage.UserRating,
                     Comments = listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
                     {
                         Id = listComment.Id,

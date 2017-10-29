@@ -14,6 +14,8 @@ namespace Backend.Contracts.Queries
             public string UserId { get; set; }
             public DateTime Date { get; set; }
             public IEnumerable<ListImageComment> Comments { get; set; }
+            public double? AverageRating { get; set; }
+            public int? UserRating { get; set; }
             
             public class ListImageComment 
             {

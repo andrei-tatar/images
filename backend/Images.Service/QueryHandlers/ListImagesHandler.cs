@@ -12,11 +12,16 @@ namespace Images.Service.QueryHandlers
     {
         private readonly IStore<Image, Guid> _imageStore;
         private readonly IStore<Comment, Guid> _commentsStore;
+        private readonly IStore<ImageRating, ImageRatingId> _imageRatingsStore;
 
-        public ListImagesHandler(IStore<Image, Guid> imageStore, IStore<Comment, Guid> commentsStore)
+        public ListImagesHandler(
+            IStore<Image, Guid> imageStore,
+            IStore<Comment, Guid> commentsStore,
+            IStore<ImageRating, ImageRatingId> imageRatingsStoreStore)
         {
             _imageStore = imageStore;
             _commentsStore = commentsStore;
+            _imageRatingsStore = imageRatingsStoreStore;
         }
 
         public Task<ListImages.Image[]> Handle(ListImages message)
@@ -25,15 +30,12 @@ namespace Images.Service.QueryHandlers
                 .OrderBy(i => i.Date)
                 .Skip(message.Page * message.PageSize)
                 .Take(message.PageSize)
-                .Select(i => new ListImages.Image
+                .Select(image => new ListImages.Image
                 {
-                    Id = i.Id,
-                    UserId = i.UserId,
-                    Date = i.Date,
-                })
-                .Do(image =>
-                {
-                    image.Comments = _commentsStore
+                    Id = image.Id,
+                    UserId = image.UserId,
+                    Date = image.Date,
+                    Comments = _commentsStore
                         .Items
                         .Where(c => c.ImageGuid == image.Id)
                         .OrderBy(c => c.Date)
@@ -44,7 +46,17 @@ namespace Images.Service.QueryHandlers
                                 CommentText = s.CommentText,
                                 Date = s.Date,
                                 UserId = s.UserId,
-                            }).ToArray();
+                            }).ToArray(),
+                })
+                .Do(image =>
+                {
+                    var imageRatings = _imageRatingsStore.Items.Where(r => r.Id.ImageId == image.Id).ToArray();
+                    var userRating = imageRatings.SingleOrDefault(r => r.Id.UserId == message.UserId);
+
+                    image.UserRating = userRating?.Rate;
+                    image.AverageRating = imageRatings.Length == 0
+                        ? (double?) null
+                        : imageRatings.Select(s => s.Rate).Average();
                 })
                 .ToArray());
         }
