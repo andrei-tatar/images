@@ -26,8 +26,20 @@ namespace Images.Service.QueryHandlers
 
         public Task<ListImages.Image[]> Handle(ListImages message)
         {
-            return Task.FromResult(_imageStore.Items
-                .OrderBy(i => i.Date)
+            var query = _imageStore.Items;
+            switch (message.SortBy)
+            {
+                case ListImages.ImageSortBy.Date:
+                    query = query.OrderBy(i => i.Date);
+                    break;
+                case ListImages.ImageSortBy.Location:
+                    query = query.OrderBy(i => i.Location);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return Task.FromResult(query
                 .Skip(message.Page * message.PageSize)
                 .Take(message.PageSize)
                 .Select(image => new ListImages.Image

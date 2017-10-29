@@ -18,7 +18,7 @@ namespace Backend.Contracts.Queries
             public int? UserRating { get; set; }
             public string Location { get; set; }
 
-            public class ListImageComment 
+            public class ListImageComment
             {
                 public Guid Id { get; set; }
                 public string UserId { get; set; }
