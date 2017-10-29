@@ -16,7 +16,8 @@ namespace Backend.Contracts.Queries
             public IEnumerable<ListImageComment> Comments { get; set; }
             public double? AverageRating { get; set; }
             public int? UserRating { get; set; }
-            
+            public string Location { get; set; }
+
             public class ListImageComment 
             {
                 public Guid Id { get; set; }

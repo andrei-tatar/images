@@ -25,6 +25,7 @@ namespace Images.Contracts.Queries
             public IEnumerable<Comment> Comments { get; set; }
             public double? AverageRating { get; set; }
             public int? UserRating { get; set; }
+            public string Location { get; set; }
 
             public class Comment
             {

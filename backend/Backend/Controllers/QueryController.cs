@@ -23,6 +23,7 @@ namespace Backend.Controllers
                     Date = listImage.Date,
                     AverageRating = listImage.AverageRating,
                     UserRating =  listImage.UserRating,
+                    Location = listImage.Location,
                     Comments = listImage.Comments.Select(listComment => new ListImagesResponse.ListImage.ListImageComment
                     {
                         Id = listComment.Id,

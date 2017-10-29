@@ -35,6 +35,7 @@ namespace Images.Service.QueryHandlers
                     Id = image.Id,
                     UserId = image.UserId,
                     Date = image.Date,
+                    Location = image.Location,
                     Comments = _commentsStore
                         .Items
                         .Where(c => c.ImageGuid == image.Id)
